@@ -1,13 +1,12 @@
+from fastapi import FastAPI
+from pydantic import BaseModel
 from langchain.agents import create_agent
 from langchain.tools import tool
 from langchain_google_genai import ChatGoogleGenerativeAI
-from dotenv import load_dotenv
 import requests
 import os
 
-load_dotenv()
-
-#print(os.getenv("GOOGLE_API_KEY"))  # Debug
+app = FastAPI()
 
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.5-flash",
@@ -25,20 +24,34 @@ def get_weather(city: str):
 
     return "Something went wrong"
 
+
 agent = create_agent(
     model=llm,
     tools=[get_weather]
 )
 
-user_query = input("Ask me anything: ")
 
-result = agent.invoke({
-    "messages": [
-        {
-            "role": "user",
-            "content": user_query
-        }
-    ]
-})
+class WeatherRequest(BaseModel):
+    query: str
 
-print(result["messages"][-1].content)
+
+@app.get("/")
+def home():
+    return {"message": "Weather Agent is running"}
+
+
+@app.post("/weather")
+def weather(request: WeatherRequest):
+
+    result = agent.invoke({
+        "messages": [
+            {
+                "role": "user",
+                "content": request.query
+            }
+        ]
+    })
+
+    return {
+        "response": result["messages"][-1].content
+    }
