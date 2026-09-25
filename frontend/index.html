@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#07080c" />
+  <title>SkyCast — Weather AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">✦</div>
+        <div>
+          <strong>SkyCast</strong>
+          <span>Weather intelligence</span>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button id="locationButton" class="ghost-button" type="button">⌖ <span>My location</span></button>
+        <button id="themeButton" class="round-button" type="button" aria-label="Toggle theme">☾</button>
+      </div>
+    </header>
+
+    <section class="workspace">
+      <aside class="context-panel">
+        <div class="eyebrow">LIVE CONTEXT</div>
+        <div class="location-row">
+  <div>
+    <p class="muted">Weather for</p>
+    <h2 id="contextCity">No location selected</h2>
+  </div>
+
+  <button
+    id="changeCityButton"
+    class="mini-button"
+    type="button"
+  >
+    Change
+  </button>
+</div>
+
+        <form id="searchForm" class="city-search">
+          <input id="cityInput" type="text" placeholder="Search city..." autocomplete="off" />
+          <button type="submit">Go</button>
+        </form>
+
+        <div class="weather-snapshot">
+          <div class="weather-main">
+            <span id="weatherIcon" class="weather-icon">☀️</span>
+            <div>
+              <div id="temperature" class="temperature">--°</div>
+              <div id="condition" class="condition">Loading weather…</div>
+            </div>
+          </div>
+          <div class="feels">Feels like <b id="feelsLike">--°</b></div>
+        </div>
+
+        <div class="metrics">
+          <div><span>Humidity</span><b id="humidity">--%</b></div>
+          <div><span>Wind</span><b id="wind">-- km/h</b></div>
+          <div><span>Rain</span><b id="rainChance">--%</b></div>
+          <div><span>UV</span><b id="uv">--</b></div>
+          <div><span>Visibility</span><b id="visibility">-- km</b></div>
+          <div><span>Pressure</span><b id="pressure">-- hPa</b></div>
+        </div>
+
+        <div class="quick-title">ASK ABOUT</div>
+        <div class="quick-prompts">
+          <button type="button" data-question="Will it rain today?">☔ Rain today</button>
+          <button type="button" data-question="What should I wear today?">👕 What to wear</button>
+          <button type="button" data-question="Is it good weather for outdoor activities?">🏃 Outdoor plans</button>
+          <button type="button" data-question="What should I carry with me today?">🎒 What to carry</button>
+        </div>
+      </aside>
+
+      <section class="chat-panel">
+        <div class="chat-header">
+          <div class="agent-avatar">✦</div>
+          <div>
+            <h1>Ask SkyCast</h1>
+            <p><span class="online-dot"></span> Live weather assistant</p>
+          </div>
+        </div>
+
+        <div id="chatMessages" class="chat-messages" aria-live="polite">
+          <div class="message-row ai-row">
+            <div class="message ai-message">
+              <div class="message-label">SkyCast</div>
+              <p>Hey! I’m your weather assistant. Ask me about rain, what to wear, outdoor plans, UV, wind, visibility, or the forecast.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="composer-wrap">
+          <div class="suggestions">
+            <button type="button" data-question="Will it rain today?">Will it rain today?</button>
+            <button type="button" data-question="Should I carry an umbrella?">Should I carry an umbrella?</button>
+            <button type="button" data-question="Is it too hot for a run?">Good for a run?</button>
+          </div>
+          <form id="chatForm" class="composer">
+            <textarea id="chatInput" rows="1" placeholder="Ask anything about the weather…" aria-label="Weather question"></textarea>
+            <button id="chatButton" type="submit" aria-label="Send message">↑</button>
+          </form>
+          <div class="composer-note">SkyCast uses live weather context to ground its answers.</div>
+        </div>
+      </section>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
