@@ -64,40 +64,6 @@ The Gemini model is configured with a low temperature (`0.3`) to keep responses 
 ---
 
 ## How It Works
-
-```text
-                 USER QUESTION
-                       │
-                       ▼
-              ┌─────────────────┐
-              │  FastAPI /ask   │
-              └────────┬────────┘
-                       │
-          ┌────────────┼────────────┐
-          │            │            │
-          ▼            ▼            ▼
-     User Query   Live Weather   Chat History
-                       │            │
-                       └─────┬──────┘
-                             ▼
-                    ┌─────────────────┐
-                    │  Context Builder│
-                    └────────┬────────┘
-                             │
-                             ▼
-                    ┌─────────────────┐
-                    │  Gemini 2.5     │
-                    │     Flash       │
-                    └────────┬────────┘
-                             │
-                             ▼
-                    ┌─────────────────┐
-                    │ Response Cleaner│
-                    └────────┬────────┘
-                             │
-                             ▼
-                      AI RESPONSE
-```
 <img width="657" height="937" alt="image" src="https://github.com/user-attachments/assets/e48436d6-2104-464d-bbc7-1066bf6d6e04" />
 
 ## Core Agent Flow
