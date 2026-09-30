@@ -20,7 +20,7 @@
 
 ## 🚀 Live Demo
 
-* **Live Application:** Add your Vercel frontend URL here
+* **Live Application:** weatheragent-frontend-chi.vercel.app
 * **Backend API:** [SkyCast Weather AI API](https://weather-agent-app-fra0.onrender.com/?utm_source=chatgpt.com)
 
 ---
