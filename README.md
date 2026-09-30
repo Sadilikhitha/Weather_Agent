@@ -15,16 +15,16 @@
   <img src="https://img.shields.io/badge/Google%20Gemini-4285F4?style=for-the-badge&logo=google&logoColor=white">
 </p>
 
----
 
-## 🚀 Live Demo
+
+##  Live Demo
 
 * **Live Application:** https://weatheragent-frontend-chi.vercel.app/?
 * **Backend API:** [SkyCast Weather AI API](https://weather-agent-app-fra0.onrender.com/?utm_source=chatgpt.com)
 
----
 
-## 📌 Overview
+
+##  Overview
 
 **SkyCast Weather AI** is a conversational weather assistant that uses live weather information and Google Gemini to answer weather-related questions.
 
@@ -91,7 +91,7 @@ SkyCast can provide practical recommendations based on weather conditions, inclu
 * 🌤️ Outdoor activities
 * 🚗 Travel considerations
 
-### 📍 Location Support
+### Location Support
 
 SkyCast supports both:
 
@@ -368,7 +368,7 @@ Then add them to the README like this:
 ### Dashboard
 
 <p align="center">
-  <img src="screenshots/skycast-dashboard.png" alt="SkyCast Dashboard" width="900">
+<img width="700" height="300" alt="image" src="https://github.com/user-attachments/assets/cf1a31e3-cd46-473c-9ddc-b3f9732335cf" />
 </p>
 
 ### Weather Information
