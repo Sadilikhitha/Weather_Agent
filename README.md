@@ -347,46 +347,23 @@ const API = "https://weather-agent-app-fra0.onrender.com";
 
 ## 📸 Screenshots
 
-Create a folder named:
-
-```text
-screenshots/
-```
-
-Inside it, add screenshots of your application:
-
-```text
-screenshots/
-├── skycast-dashboard.png
-├── skycast-weather.png
-├── skycast-chat.png
-└── skycast-location.png
-```
-
-Then add them to the README like this:
-
 ### Dashboard
 
 <p align="center">
-<img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/cf1a31e3-cd46-473c-9ddc-b3f9732335cf" />
+<img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/cf1a31e3-cd46-473c-9ddc-b3f9732335cf" />
 </p>
 
-### Weather Information
-
-<p align="center">
-  <img src="screenshots/skycast-weather.png" alt="SkyCast Weather" width="900">
-</p>
 
 ### AI Chat
 
 <p align="center">
-  <img src="screenshots/skycast-chat.png" alt="SkyCast AI Chat" width="900">
+<img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/7fcd03d7-4e68-4154-b59a-ed58b843d10f" />
 </p>
 
 ### Location-Based Weather
 
 <p align="center">
-  <img src="screenshots/skycast-location.png" alt="SkyCast Location Weather" width="900">
+<img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/ac8177a3-6f45-4274-b106-88e8cdb46942" />
 </p>
 
 ---
@@ -432,7 +409,7 @@ Which day is suitable for sightseeing?
 
 ### Likhitha Sadi
 
-GitHub: [Weather_Agent Repository](https://github.com/Sadilikhitha/Weather_Agent?utm_source=chatgpt.com)
+GitHub: https://github.com/Sadilikhitha
 
 ---
 
