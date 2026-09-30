@@ -2,9 +2,8 @@
 
 > An AI-powered weather assistant that combines live weather data with Google Gemini to provide conversational weather information and practical recommendations.
 
-<p align="center">
-  <img src="screenshots/skycast-dashboard.png" alt="SkyCast Weather AI Dashboard" width="900">
-</p>
+<img width="1457" height="891" alt="image" src="https://github.com/user-attachments/assets/cf1a31e3-cd46-473c-9ddc-b3f9732335cf" />
+
 
 <p align="center">
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
