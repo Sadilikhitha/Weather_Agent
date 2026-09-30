@@ -446,7 +446,7 @@ function displayWeather(data) {
 
     updateSmartAdvice(data);
 
-
+}
 // =========================================================
 // WEATHER BACKGROUND
 // =========================================================
