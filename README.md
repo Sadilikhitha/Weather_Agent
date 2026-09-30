@@ -368,7 +368,7 @@ Then add them to the README like this:
 ### Dashboard
 
 <p align="center">
-<img width="700" height="300" alt="image" src="https://github.com/user-attachments/assets/cf1a31e3-cd46-473c-9ddc-b3f9732335cf" />
+<img width="700" height="400" alt="image" src="https://github.com/user-attachments/assets/cf1a31e3-cd46-473c-9ddc-b3f9732335cf" />
 </p>
 
 ### Weather Information
