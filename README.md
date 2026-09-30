@@ -2,7 +2,7 @@
 
 > An AI-powered weather assistant that combines live weather data with Google Gemini to provide conversational weather information and practical recommendations.
 
-<img width="1457" height="891" alt="image" src="https://github.com/user-attachments/assets/cf1a31e3-cd46-473c-9ddc-b3f9732335cf" />
+<img width="1200" height="850" alt="image" src="https://github.com/user-attachments/assets/cf1a31e3-cd46-473c-9ddc-b3f9732335cf" />
 
 
 <p align="center">
