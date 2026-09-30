@@ -309,11 +309,9 @@ function updateSmartAdvice(data) {
 // =========================================================
 
 
-=======
 // DISPLAY WEATHER
 // =========================================================
 
->>>>>>> 18ee25a2dede4c523f2e5a8657ec4974b588a2d8
 function displayWeather(data) {
 
     if (!data) {
