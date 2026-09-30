@@ -1,4 +1,4 @@
-const API = "http://127.0.0.1:8000";
+const API = "https://weather-agent-app-fra0.onrender.com";
 
 
 // =========================================================
@@ -55,15 +55,13 @@ const visibility =
 const pressure =
     document.getElementById("pressure");
 
-<<<<<<< HEAD
+
 const weatherScene =
     document.getElementById("weatherScene");
 
 const smartAdviceText =
     document.getElementById("smartAdviceText");
 
-=======
->>>>>>> 18ee25a2dede4c523f2e5a8657ec4974b588a2d8
 
 // Chat
 const chatForm =
@@ -236,14 +234,11 @@ function resetWeatherPanel() {
             "-- hPa";
     }
 
-<<<<<<< HEAD
+
     if (smartAdviceText) {
         smartAdviceText.textContent =
             "Select a location to get practical weather guidance.";
     }
-
-=======
->>>>>>> 18ee25a2dede4c523f2e5a8657ec4974b588a2d8
 
     document.body.classList.remove(
         "weather-sunny",
@@ -258,7 +253,6 @@ function resetWeatherPanel() {
 
 
 // =========================================================
-<<<<<<< HEAD
 // SMART PRACTICAL ADVICE
 // =========================================================
 
@@ -451,12 +445,8 @@ function displayWeather(data) {
         data.condition
     );
 
-<<<<<<< HEAD
-    updateSmartAdvice(data);
 
-=======
->>>>>>> 18ee25a2dede4c523f2e5a8657ec4974b588a2d8
-}
+    updateSmartAdvice(data);
 
 
 // =========================================================
