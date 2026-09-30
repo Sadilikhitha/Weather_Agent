@@ -1,216 +1,111 @@
-# 🌦️ SkyCast Weather Agent
-AI-Powered Weather Intelligence & Conversational Assistant
+# 🌦️ SkyCast Weather AI
 
-<p> Real-time weather data  • Generative AI  • Smart recommendations  • Modern UI </p>
-<br>
+> An AI-powered weather assistant that combines live weather data with Google Gemini to provide conversational weather information and practical recommendations.
 
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white">
+<p align="center">
+  <img src="screenshots/skycast-dashboard.png" alt="SkyCast Weather AI Dashboard" width="900">
+</p>
 
-<img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white"> <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=chainlink&logoColor=white"> <img src="https://img.shields.io/badge/Google%20Gemini-4285F4?style=for-the-badge&logo=google&logoColor=white"> <img src="https://img.shields.io/badge/REST%20API-FF6F00?style=for-the-badge">
-
-</div>
-
-A lightweight weather assistant that combines **live weather data with Google Gemini** to answer weather-related questions in a conversational way.
-
-The agent does not rely on the language model alone. Weather information is fetched from `wttr.in`, passed to the model as context, and used to generate practical responses.
-
----
-
-## Overview
-
-The Weather Agent is the AI layer behind **SkyCast Weather AI**.
-
-Its main responsibility is to take:
-
-* the user's question
-* current weather data
-* recent conversation history
-
-and produce a short, weather-specific response.
-
-For example:
-
-```text
-Weather:
-Hyderabad — 29°C, Overcast, Feels like 31°C
-
-User:
-Is it too hot for a run?
-
-SkyCast:
-It's fairly warm for running. Stay hydrated and
-consider running during a cooler part of the day.
-```
-
-The frontend sends the current weather and conversation history to the FastAPI backend, which passes them to the weather agent.
+<p align="center">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white">
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white">
+  <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=chainlink&logoColor=white">
+  <img src="https://img.shields.io/badge/Google%20Gemini-4285F4?style=for-the-badge&logo=google&logoColor=white">
+</p>
 
 ---
 
-## Tech Stack
+## 🚀 Live Demo
 
-| Component           | Technology              |
-| ------------------- | ----------------------- |
-| Language            | Python                  |
-| AI Model            | Google Gemini 2.5 Flash |
-| AI Integration      | LangChain Google GenAI  |
-| Weather Source      | wttr.in                 |
-| HTTP Client         | Requests                |
-| Configuration       | python-dotenv           |
-| Backend Integration | FastAPI                 |
-| Data Format         | JSON                    |
-
-The Gemini model is configured with a low temperature (`0.3`) to keep responses relatively focused and consistent.
+* **Live Application:** Add your Vercel frontend URL here
+* **Backend API:** [SkyCast Weather AI API](https://weather-agent-app-fra0.onrender.com/?utm_source=chatgpt.com)
 
 ---
 
-## How It Works
-<img width="657" height="937" alt="image" src="https://github.com/user-attachments/assets/e48436d6-2104-464d-bbc7-1066bf6d6e04" />
+## 📌 Overview
 
-## Core Agent Flow
+**SkyCast Weather AI** is a conversational weather assistant that uses live weather information and Google Gemini to answer weather-related questions.
 
-The agent follows a simple sequence:
+The application allows users to:
 
-### 1. Get Live Weather
+* Search for weather by location
+* View current weather conditions
+* Check upcoming weather forecasts
+* Ask questions in natural language
+* Get practical weather-based recommendations
+* Ask follow-up questions without repeatedly providing the location
+* Use browser location to get weather for their current location
 
-Weather data is retrieved from:
+Instead of relying only on an AI model, SkyCast provides live weather information as context to Gemini before generating a response.
 
-```text
-https://wttr.in/{city}?format=j1
-```
+---
 
-The current conditions are converted into a smaller structured object containing values such as:
+## ✨ Features
 
-* Temperature
+### 🌤️ Weather Information
+
+* Current temperature
 * Feels-like temperature
 * Weather condition
 * Humidity
 * Wind speed
 * Wind direction
-* Pressure
+* Atmospheric pressure
 * Visibility
 * UV index
 * Precipitation
+* Five-day forecast
+* Daily maximum and minimum temperatures
+* Rain probability
 
----
+### 🤖 AI Weather Assistant
 
-### 2. Build Weather Context
-
-The retrieved weather data is converted into JSON before being included in the Gemini prompt.
-
-```python
-weather_context = json.dumps(
-    weather_data,
-    ensure_ascii=False,
-    indent=2
-)
-```
-
-This gives the model a clearly structured representation of the current weather instead of asking it to infer conditions from the user's question.
-
----
-
-### 3. Add Conversation Context
-
-The agent supports follow-up questions.
-
-For example:
+Users can ask natural-language questions such as:
 
 ```text
-User:
-What is the temperature?
+Will it rain today?
 
-SkyCast:
-It is 29°C.
+What should I wear?
 
-User:
-Is it good for running?
+Should I carry an umbrella?
 
-SkyCast:
-It's fairly warm, so stay hydrated...
+Is it good for outdoor activities?
+
+Is it too hot for a run?
 ```
 
-The latest **12 messages** are retained and included in the prompt. This is intentionally limited to control token usage.
+The AI uses the available weather information to provide a contextual response.
 
-The frontend also clears the conversation history when the user changes location so that weather information from the previous city is not reused.
+### 🧳 Trip Recommendations
 
----
+SkyCast can provide practical recommendations based on weather conditions, including:
 
-## System Prompt Design
+* 👕 Clothing
+* ☂️ Umbrella
+* 🧴 Sunscreen
+* 🕶️ Sunglasses
+* 💧 Hydration
+* 👟 Footwear
+* 🌤️ Outdoor activities
+* 🚗 Travel considerations
 
-The agent has a dedicated system prompt defining how it should use weather information.
+### 📍 Location Support
 
-Important rules include:
+SkyCast supports both:
 
-* Use supplied live weather data when available.
-* Remember recent conversation context.
-* Do not ask for the city again when it is already present.
-* Do not invent weather information.
-* Keep responses concise.
-* Distinguish weather facts from recommendations.
+* Manual location search
+* Browser-based geolocation
 
-This is important because the model is not simply being asked:
+When the user gives location permission, the application can use their current browser location rather than being restricted to one city.
 
-```text
-"Answer this weather question."
-```
+### 💬 Conversational Context
 
-Instead, it receives both **rules and current weather context**.
+SkyCast supports follow-up questions.
 
----
-
-## Practical Recommendation Logic
-
-The system prompt also defines how weather conditions should translate into practical suggestions.
-
-### 🌡️ Hot Weather
-
-The agent can recommend:
-
-* Hydration
-* Light or breathable clothing
-* Sun protection
-
-### ☀️ High UV
-
-The agent can recommend:
-
-* Sunscreen
-* Sunglasses
-* Limiting prolonged direct sunlight
-
-### 🌧️ High Rain Probability
-
-The agent can recommend:
-
-* Carrying an umbrella
-* Rain protection
-
-### 💨 Strong Wind
-
-The response can mention:
-
-* The effect of wind on perceived temperature
-* Outdoor activity considerations
-
-### 🌫️ Poor Visibility
-
-The agent can mention:
-
-* Travel caution
-
-### ❄️ Cold Weather
-
-The agent can recommend:
-
-* Appropriate warm clothing
-
----
-
-## Context-Aware Follow-Up Questions
-
-One of the useful parts of the implementation is that the user does not have to repeat the location.
-
-For example:
+Example:
 
 ```text
 User:
@@ -229,192 +124,70 @@ User:
 What should I wear?
 
 SkyCast:
-Light, breathable clothing would be comfortable.
+Light and breathable clothing would be comfortable.
 ```
 
-The agent explicitly handles these as follow-up questions using the existing weather context.
+The latest conversation messages are used to maintain context.
 
 ---
 
-## Prompt Construction
-
-The final prompt is assembled from four main parts:
+## 🏗️ How It Works
 
 ```text
-SYSTEM INSTRUCTIONS
-        +
-LIVE WEATHER DATA
-        +
-RECENT CONVERSATION
-        +
-LATEST USER QUESTION
-        ↓
-     GEMINI
-        ↓
-   FINAL ANSWER
+                User
+                  │
+                  ▼
+        ┌─────────────────┐
+        │ SkyCast Frontend│
+        │ HTML/CSS/JS     │
+        └────────┬────────┘
+                 │
+                 ▼
+        ┌─────────────────┐
+        │ FastAPI Backend │
+        └────────┬────────┘
+                 │
+          ┌──────┴──────┐
+          ▼             ▼
+   Weather Service   Google Gemini
+          │             │
+          └──────┬──────┘
+                 ▼
+        AI Weather Response
+                 │
+                 ▼
+                User
 ```
 
-This structure is implemented in `ask_weather_agent()`.
+The frontend sends the user's question, weather information, and recent conversation history to the FastAPI backend.
+
+The backend passes this information to the weather agent, which uses Google Gemini to generate the final response.
 
 ---
 
-## Response Handling
+## 🛠️ Tech Stack
 
-Gemini responses may not always arrive as a simple string.
-
-The project includes a `clean_response()` function that handles:
-
-* String responses
-* Lists
-* Dictionaries
-* Nested text/content fields
-
-The function converts these formats into a clean string before returning the answer to the API.
-
-This keeps the FastAPI response format simple:
-
-```json
-{
-  "answer": "It's fairly warm for running. Stay hydrated..."
-}
-```
+| Technology        | Purpose                    |
+| ----------------- | -------------------------- |
+| **HTML5**         | Frontend structure         |
+| **CSS3**          | User interface and styling |
+| **JavaScript**    | Frontend functionality     |
+| **Python**        | Backend development        |
+| **FastAPI**       | REST API                   |
+| **Google Gemini** | Generative AI              |
+| **LangChain**     | Gemini integration         |
+| **wttr.in**       | Weather data               |
+| **Requests**      | HTTP requests              |
+| **python-dotenv** | Environment variables      |
+| **Vercel**        | Frontend deployment        |
+| **Render**        | Backend deployment         |
 
 ---
 
-## Weather Forecast Support
-
-The weather module also processes forecast information.
-
-It reads up to **five forecast days** and extracts:
-
-* Date
-* Maximum temperature
-* Minimum temperature
-* Condition
-* Rain probability
-
-For each day, the implementation uses an available hourly forecast entry when present.
-
-The resulting response contains both current weather information and a `forecast` list.
-
----
-
-## FastAPI Integration
-
-The weather agent is exposed through the FastAPI backend.
-
-### `GET /weather`
-
-Used by the frontend to retrieve weather information for a selected city.
+## 📂 Project Structure
 
 ```text
-GET /weather?city=Hyderabad
-```
-
-The endpoint calls:
-
-```python
-get_weather_data(city)
-```
-
-and returns the resulting weather information.
-
-### `POST /ask`
-
-Used for conversational weather questions.
-
-The request contains:
-
-```json
-{
-  "question": "Is it too hot for a run?",
-  "weather_data": {},
-  "chat_history": []
-}
-```
-
-The backend passes these values to:
-
-```python
-ask_weather_agent(
-    user_query=question,
-    weather_data=weather_data,
-    chat_history=chat_history
-)
-```
-
-and returns:
-
-```json
-{
-  "answer": "..."
-}
-```
-
----
-
-## Frontend → Backend → AI Flow
-
-The frontend sends the current weather and chat history along with the user's question.
-
-```text
-Browser
-   │
-   │ POST /ask
-   ▼
-FastAPI
-   │
-   ├── User Question
-   ├── Current Weather
-   └── Chat History
-          │
-          ▼
-   Weather Agent
-          │
-          ▼
-   Gemini 2.5 Flash
-          │
-          ▼
-      AI Answer
-          │
-          ▼
-       Browser
-```
-
-This integration is implemented in the frontend JavaScript using `fetch()` and JSON.
-
----
-
-## Environment Setup
-
-Create a `.env` file:
-
-```env
-GOOGLE_API_KEY=your_google_api_key
-```
-
-The application loads environment variables using `python-dotenv`.
-
-### Install Dependencies
-
-```bash
-pip install fastapi uvicorn requests python-dotenv langchain-google-genai
-```
-
-### Run the Backend
-
-```bash
-uvicorn backend.main:app --reload
-```
-
-The FastAPI application is initialized with the name **SkyCast Weather AI**.
-
----
-
-## Project Structure
-
-```text
-SkyCast/
+Weather_Agent-main/
 │
 ├── backend/
 │   ├── main.py
@@ -423,82 +196,250 @@ SkyCast/
 ├── frontend/
 │   ├── index.html
 │   ├── style.css
-│   └── app.js
+│   ├── app.js
+│   └── package-lock.json
 │
-├── .env
+├── Weather_Agent/
+│
+├── .gitignore
+├── .gitattributes
 ├── requirements.txt
+├── info.txt
 └── README.md
 ```
 
 ---
 
-## Key Implementation Decisions
+## ⚙️ Installation
 
-### Live data is passed to the model
+### 1. Clone the Repository
 
-The agent does not ask Gemini to guess current weather conditions. Weather data is retrieved separately and explicitly supplied as context.
+```bash
+git clone https://github.com/Sadilikhitha/Weather_Agent.git
+```
 
-### Conversation history is limited
+```bash
+cd Weather_Agent
+```
 
-Only the latest 12 messages are retained. This keeps the prompt smaller while still supporting follow-up questions.
+### 2. Create a Virtual Environment
 
-### Location changes reset conversation
+```bash
+python -m venv .venv
+```
 
-When the user changes cities, the frontend clears the previous conversation. This prevents old location context from being carried into the new session.
+For Windows:
 
-### Weather facts and advice are separated
+```bash
+.venv\Scripts\activate
+```
 
-The system prompt explicitly tells the model to distinguish factual weather values from recommendations.
+### 3. Install Dependencies
 
-### API failures are handled
-
-## Both the weather service and Gemini calls have exception handling so failures can be surfaced to the FastAPI layer instead of silently returning incorrect information.
-
-## What This Demonstrates
-
-From a development perspective, this project demonstrates:
-
-* Integrating a **Generative AI model into a real application**
-* Using an external API as a source of live data
-* Building prompts with structured context
-* Maintaining limited conversational memory
-* Connecting a JavaScript frontend to a Python backend
-* Designing REST endpoints with FastAPI
-* Handling external API and model errors
-* Using environment variables for API credentials
-* Converting model output into a consistent API response
+```bash
+pip install -r requirements.txt
+```
 
 ---
 
-## Limitations
+## 🔑 Environment Variables
 
-* Weather data depends on the availability of `wttr.in`.
-* AI responses depend on Google Gemini API availability and quota.
-* Conversation history is maintained in the client session rather than a persistent database.
-* The current implementation does not provide long-term user memory.
-* The backend currently accepts CORS requests from all origins, which should be restricted before production deployment. The current FastAPI configuration uses `allow_origins=["*"]`.
+Create a `.env` file in the project root.
 
----
+```env
+GEMINI_API_KEY=your_gemini_api_key
+```
 
-## Future Improvements
-
-* Add persistent conversation storage.
-* Add authentication and user sessions.
-* Restrict CORS to the deployed frontend domain.
-* Add request validation using Pydantic models.
-* Add API-level rate limiting and caching.
-* Add structured logging.
-* Add automated tests for weather and agent functions.
-* Add fallback weather providers.
-* Improve forecast-specific question handling.
+Keep your API key private and **never upload `.env` to GitHub**.
 
 ---
 
-## 👩‍💻 Project
+## ▶️ Run the Backend
 
-**SkyCast Weather AI**
+From the project root:
 
-A weather application combining:
+```bash
+uvicorn backend.main:app --reload
+```
+
+The backend will run at:
+
+```text
+http://127.0.0.1:8000
+```
+
+FastAPI documentation:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+---
+
+## 🌐 Run the Frontend
+
+The frontend is built using plain HTML, CSS, and JavaScript.
+
+Open another terminal:
+
+```bash
+cd frontend
+```
+
+Run:
+
+```bash
+python -m http.server 5500
+```
+
+Then open:
+
+```text
+http://localhost:5500
+```
+
+---
+
+## 🔗 API Endpoints
+
+### Weather
+
+```http
+GET /weather?city={city}
+```
+
+Example:
+
+```text
+/weather?city=Hyderabad
+```
+
+Returns current weather and forecast information.
+
+### AI Assistant
+
+```http
+POST /ask
+```
+
+The endpoint accepts the user's question along with weather data and conversation history and returns an AI-generated response.
+
+---
+
+## 🚀 Deployment
+
+### Backend
+
+The FastAPI backend is deployed on **Render**.
+
+[SkyCast Weather AI Backend](https://weather-agent-app-fra0.onrender.com/?utm_source=chatgpt.com)
+
+### Frontend
+
+The frontend is deployed separately on **Vercel**.
+
+The frontend communicates with the Render backend using the deployed API URL.
+
+```javascript
+const API = "https://weather-agent-app-fra0.onrender.com";
+```
+
+---
+
+## 📸 Screenshots
+
+Create a folder named:
+
+```text
+screenshots/
+```
+
+Inside it, add screenshots of your application:
+
+```text
+screenshots/
+├── skycast-dashboard.png
+├── skycast-weather.png
+├── skycast-chat.png
+└── skycast-location.png
+```
+
+Then add them to the README like this:
+
+### Dashboard
+
+<p align="center">
+  <img src="screenshots/skycast-dashboard.png" alt="SkyCast Dashboard" width="900">
+</p>
+
+### Weather Information
+
+<p align="center">
+  <img src="screenshots/skycast-weather.png" alt="SkyCast Weather" width="900">
+</p>
+
+### AI Chat
+
+<p align="center">
+  <img src="screenshots/skycast-chat.png" alt="SkyCast AI Chat" width="900">
+</p>
+
+### Location-Based Weather
+
+<p align="center">
+  <img src="screenshots/skycast-location.png" alt="SkyCast Location Weather" width="900">
+</p>
+
+---
+
+## 💡 Example Questions
+
+```text
+Will it rain today?
+
+What should I wear today?
+
+Should I carry an umbrella?
+
+Is it suitable for outdoor activities?
+
+What is the weather tomorrow?
+
+Is it too hot for a run?
+
+What should I carry for my trip?
+
+Which day is suitable for sightseeing?
+```
+
+---
+
+## 🔮 Future Improvements
+
+* Hourly weather forecasts
+* Weather alerts and notifications
+* Interactive weather maps
+* Improved trip planning
+* More detailed activity recommendations
+* Weather history and trends
+* Additional weather data sources
+* User authentication
+* Persistent conversation history
+* Mobile application
+
+---
+
+## 👩‍💻 Author
+
+### Likhitha Sadi
+
+GitHub: [Weather_Agent Repository](https://github.com/Sadilikhitha/Weather_Agent?utm_source=chatgpt.com)
+
+---
+
+## ⭐ Project
+
+**SkyCast Weather AI** combines:
 
 ```text
 🌦️ Live Weather Data
@@ -509,9 +450,9 @@ A weather application combining:
         +
 🐍 Python / FastAPI
         +
-💻 JavaScript Frontend
+💻 JavaScript
         ↓
-Conversational Weather Assistance
+Conversational Weather Intelligence
 ```
 
-**Built as a practical Generative AI application rather than a standalone chatbot.**
+> Built as a practical Generative AI application for weather assistance and travel recommendations.
